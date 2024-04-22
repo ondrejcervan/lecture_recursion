@@ -41,6 +41,18 @@ def binary_search(seq, number):
             return middle
     return None
 
+def recursive_binary_search(seq, number, left, right):
+    mid = left + (right - left) // 2
+
+    if number == seq[mid]:
+        return  mid
+    elif left == right:
+        return
+    elif number < seq[mid]:
+        return recursive_binary_search(seq, number, left, mid-1)
+    elif number > seq[mid]:
+        return recursive_binary_search(seq, number, mid+1, right)
+
 
 def main(file_name, number):
     sequence = read_data(file_name=file_name, key="ordered_numbers")
